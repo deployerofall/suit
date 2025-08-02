@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suitcoin Background</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { overflow:hidden; padding-top:0; }
+    .ticker, .panel, .terminal, .brand-panel { display:none; }
+  </style>
+</head>
+<body>
+  <div id="grid" class="grid"></div>
+
+  <script>
+    // Minimal grid creator (sequential order)
+    const grid = document.getElementById('grid');
+    const images = [
+      'assets/pepesuit.png',
+      'assets/pepesuit2.png',
+      'assets/pepeinsuit3.png',
+      'assets/pepeinsuit4.png',
+      'assets/wojakinsuit.png',
+      'assets/bobosuit1.png',
+      'assets/bobosuit2.png',
+      'assets/bobosuit3.png',
+      'assets/chudsuit.png'
+    ];
+    function create(){
+      grid.innerHTML='';
+      const size=120;
+      const cols=Math.max(1,Math.floor(window.innerWidth/size));
+      const rows=Math.ceil(window.innerHeight/size);
+      const total=cols*rows;
+      for(let i=0;i<total;i++){
+        const div=document.createElement('div');
+        div.className='square';
+        const img=document.createElement('img');
+        img.src=images[i%images.length];
+        div.appendChild(img);
+        grid.appendChild(div);
+      }
+    }
+    create();
+    window.addEventListener('resize',create);
+  </script>
+</body>
+</html>
